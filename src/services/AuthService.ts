@@ -1,6 +1,6 @@
 import api from './api';
 
-import {  UserData } from '../models/User';
+import { UserData } from '../models/User';
 
 interface LoginData {
   email: string;

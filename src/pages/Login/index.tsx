@@ -72,7 +72,6 @@ function Login() {
     try {
       const { token, user } = await login(loginData);
 
-      console.log(user.name);
       setToken(token);
  
       addUser(user);
