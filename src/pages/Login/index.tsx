@@ -67,19 +67,17 @@ function Login() {
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     try {
       const { token, user } = await login(loginData);
-
       setToken(token);
- 
+  
       addUser(user);
-
       history.push('/home');
     } catch(err) {
-      setFormError(true);
       console.log(err);
+      setFormError(true);
     }
   }
 
@@ -89,15 +87,15 @@ function Login() {
     <Grid container className={styles.root}>
       <Paper className={styles.paper} elevation={4}>
         <form onSubmit={handleSubmit}>
-          <TextField 
-            required 
+          <TextField
+            required
             type="email"
-            variant="outlined" 
-            label="E-mail" 
-            name="email" 
-            fullWidth 
+            variant="outlined"
+            label="E-mail"
+            name="email"
+            fullWidth
             className={styles.input}
-            onChange={handleChange} 
+            onChange={handleChange}
             error={formError}
             helperText={formError && 'Credencial inválida'}
           />
@@ -112,7 +110,7 @@ function Login() {
             className={styles.input}
             onChange={handleChange}
             error={formError}
-            helperText={formError && 'Credencial inválida'} 
+            helperText={formError && 'Credencial inválida'}
             InputProps={{
               endAdornment: <InputAdornment position="end">
                 <IconButton onClick={() => setShowPassword(!showPassword)}>
@@ -129,7 +127,6 @@ function Login() {
           Não possui uma conta? <Typography variant="caption" component={Link} to="/register" className={styles.link}>Cadastre-se</Typography>
         </Typography>
       </Paper>
-
     </Grid>
   )
 }

@@ -1,4 +1,5 @@
-import React, { useState, createContext, ReactNode } from "react";
+import React, { useState, useEffect, createContext, ReactNode } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { User } from "../models/User";
 
 interface UserContextProps {
@@ -13,7 +14,7 @@ interface UserProviderProps {
 export const UserContext = createContext({} as UserContextProps);
 
 export function UserProvider({ children }: UserProviderProps) {
-  const [user, setUser] = useState({} as User);
+  const [user, setUser] = useLocalStorage('user', {} as User);
 
   function addUser(user: User) {
     setUser(user);
